@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="header_img_height">300dp</dimen>
+    <dimen name="default_margin">4dp</dimen>
+    <dimen name="large_txt_size">20sp</dimen>
+    <dimen name="regular_txt_size">14sp</dimen>
+    <dimen name="rating_star_size">20dp</dimen>
+    <dimen name="page_margin">16dp</dimen>
+    <dimen name="connection_error_text_size">50sp</dimen>
+    <dimen name="img_radius_size">8dp</dimen>
+    <dimen name="recycler_view_item_margin">8dp</dimen>
+    <dimen name="cover_img_width">120dp</dimen>
+    <dimen name="cover_img_height">80dp</dimen>
+    <dimen name="restaurant_description_width">80dp</dimen>
+    <dimen name="restaurant_name_text_size">16sp</dimen>
+
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/img_radius_size"
+    app:cardElevation="@dimen/cardview_default_elevation"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recycler_view_item_margin">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo_img"
+            android:layout_width="@dimen/cover_img_width"
+            android:layout_height="@dimen/cover_img_height"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerInside"
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/page_margin"
+            android:layout_marginEnd="@dimen/recycler_view_item_margin"
+            android:layout_toEndOf="@id/logo_img"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/restaurant_name_text_size"
+                android:textStyle="bold"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="@dimen/restaurant_description_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="@dimen/regular_txt_size"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/eta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/page_margin" />
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

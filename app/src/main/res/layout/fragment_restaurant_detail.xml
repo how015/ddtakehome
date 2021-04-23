@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.doordash.doordashlite.viewmodel.RestaurantDetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/page_margin">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{!viewModel.connectionError &amp;&amp; !viewModel.loadingRestaurantDetail ? View.VISIBLE : View.GONE}">
+
+                <ImageView
+                    android:id="@+id/header_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/header_img_height"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="@{viewModel.restaurantDetail.business.name}"
+                    android:textSize="@dimen/large_txt_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/default_margin"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.restaurantDetail.description}"
+                    android:textSize="@dimen/regular_txt_size" />
+
+                <LinearLayout
+                    android:id="@+id/general_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/average_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/default_margin"
+                        android:text="@{Double.toString(viewModel.restaurantDetail.average_rating)}"
+                        android:textSize="@dimen/regular_txt_size" />
+
+                    <ImageView
+                        android:layout_width="@dimen/rating_star_size"
+                        android:layout_height="@dimen/rating_star_size"
+                        android:layout_marginVertical="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:src="@drawable/star_rate" />
+
+                    <TextView
+                        android:id="@+id/number_of_ratings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@{String.format(@string/number_of_ratings, viewModel.restaurantDetail.number_of_ratings)}"
+                        android:textSize="@dimen/regular_txt_size" />
+
+                    <TextView
+                        android:id="@+id/price_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        android:textSize="@dimen/regular_txt_size" />
+
+                    <TextView
+                        android:id="@+id/delivery_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@{String.format(@string/eta_in_min, viewModel.restaurantDetail.delivery_time)}"
+                        android:textSize="@dimen/regular_txt_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@string/pickup_offered_text"
+                        android:textSize="@dimen/regular_txt_size"
+                        android:visibility="@{viewModel.restaurantDetail.offers_pickup? View.VISIBLE : View.GONE}" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/general_info"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{viewModel.restaurantDetail.phone_number}"
+                    android:textSize="@dimen/regular_txt_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phone_number"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.restaurantDetail.address.printable_address}"
+                    android:textSize="@dimen/regular_txt_size" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.loadingRestaurantDetail ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/wifi_error_msg"
+            android:textSize="@dimen/connection_error_text_size"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.connectionError ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
+</layout>

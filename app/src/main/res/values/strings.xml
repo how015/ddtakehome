@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DoorDashLite</string>
+    <string name="key_business_id">BUSINESS_ID</string>
+    <string name="eta_in_min">%d min</string>
+    <string name="number_of_ratings">%d ratings</string>
+    <string name="discover_title">Discover</string>
+    <string name="restaurant_detail_title">Restaurant Detail</string>
+    <string name="wifi_error_msg">Check your wifi connection</string>
+    <string name="pickup_offered_text">Pickup Offered</string>
+
 </resources>

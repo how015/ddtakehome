@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.doordash.doordashlite.viewmodel.RestaurantListViewModel" />
+    </data>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/recycler_view"
+            android:name="com.doordash.doordashlite.RestaurantListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/page_margin"
+            android:visibility="@{viewModel.connectionError? View.GONE : View.VISIBLE}"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".fragment.RestaurantListFragment"
+            tools:listitem="@layout/restaurant_item" />
+
+        <TextView
+            android:id="@+id/connection_error_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Please check your wifi connection"
+            android:textSize="@dimen/connection_error_text_size"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.connectionError? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+</layout>
